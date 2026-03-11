@@ -29,4 +29,15 @@ export class ArtistasService {
   async remove(id: number) {
     return await this.artistaRepository.delete({ id });
   }
+
+  async findOneByNombreWithPassword(nombre: string) {
+    return await this.artistaRepository.findOne({
+      where: { nombre },
+      select: ['id', 'nombre', 'password', 'rol'], // Forzamos la selección del password
+    });
+  }
+
+  async findOneByNombre(nombre: string) {
+    return await this.artistaRepository.findOneBy({ nombre });
+  }
 }

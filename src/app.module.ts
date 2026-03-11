@@ -3,6 +3,7 @@ import { ArtistasModule } from './artistas/artistas.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CancionesModule } from './canciones/canciones.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -19,7 +20,8 @@ import { CancionesModule } from './canciones/canciones.module';
       synchronize: true,  
     }),
     ArtistasModule,
-    CancionesModule
+    CancionesModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],
