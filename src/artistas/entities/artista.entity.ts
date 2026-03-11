@@ -1,4 +1,5 @@
 import { Cancione } from "src/canciones/entities/cancione.entity";
+import { Rol } from "src/enums/rol.enum";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -18,8 +19,12 @@ export class Artista {
     @Column()
     anioDebut: number;
 
-    @Column()
-    rol: string;
+    @Column({
+        type: 'enum',
+        enum: Rol,
+        default: Rol.ARTISTA, // Valor por defecto opcional
+    })
+    rol: Rol;
 
     @Column({ select: false })
     password: string;
