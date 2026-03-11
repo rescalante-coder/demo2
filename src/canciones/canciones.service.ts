@@ -14,6 +14,13 @@ export class CancionesService {
     return await this.cancionesRepository.save(cancione);
   }
 
+  async findAllByArtista(artistaId: number) {
+    return await this.cancionesRepository.find({
+      where: { artistaId },
+      relations: ['artista']
+    });
+  }
+  
   async findAll() {
     return await this.cancionesRepository.find();
   }

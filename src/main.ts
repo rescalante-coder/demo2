@@ -21,6 +21,17 @@ async function bootstrap() {
     .setDescription('Documentación de la API de Artistas y Canciones')
     .setVersion('1.0')
     .addTag('música')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        description: 'Ingresa tu token JWT',
+        in: 'header',
+      },
+      'access-token',  
+    )
     .build();
     
   const document = SwaggerModule.createDocument(app, config);
